@@ -2,10 +2,12 @@
 
 #include "CoreMinimal.h"
 #include "Engine/DataTable.h"
-class ULevelSequence; // Forward declaration вместо прямого инклуда
-#include "AlchemyDataTypes.generated.h" // СТРОГО ПОСЛЕДНИЙ ИНКЛУД!
+#include "AlchemyDataTypes.generated.h"
 
-// --- Структура Элемента (Ингредиента) ---
+class UTexture2D;
+class UStaticMesh;
+class ULevelSequence;
+
 USTRUCT(BlueprintType)
 struct FAlchemyElement : public FTableRowBase
 {
@@ -23,16 +25,14 @@ struct FAlchemyElement : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Alchemy Element")
 	FName Category;
 
-	// Ссылка на 3D модель предмета
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Alchemy Element")
 	UStaticMesh* WorldMesh;
 };
 
-// --- Структура Рецепта ---
 USTRUCT(BlueprintType)
 struct FAlchemyRecipe : public FTableRowBase
 {
-	GENERATED_BODY()	
+	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Alchemy Recipe")
 	FName IngredientA;

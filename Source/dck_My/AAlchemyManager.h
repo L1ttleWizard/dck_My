@@ -2,10 +2,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "AlchemyDataTypes.h" // Подключаем наши структуры ДО generated
-class ULevelSequence; // Forward declaration
-class AStaticMeshActor; // ДОБАВЛЕНО: Forward declaration для мешей
-#include "AAlchemyManager.generated.h" // СТРОГО ПОСЛЕДНИЙ ИНКЛУД!
+#include "AlchemyDataTypes.h"
+#include "AAlchemyManager.generated.h"
+
+class AStaticMeshActor;
 
 UCLASS()
 class DCK_MY_API AAlchemyManager : public AActor
@@ -25,12 +25,11 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Alchemy Data")
 	UDataTable* RecipeDataTable;
 
-
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Alchemy Data")
 	UDataTable* ElementDataTable;
 
 	UFUNCTION(BlueprintCallable, Category = "Alchemy Logic")
-	bool TryCraftElements(FName ItemA, FName ItemB, FName& OutResult, ULevelSequence*& OutSequence);
+	bool TryCraftElements(FName ItemA, FName ItemB, FAlchemyRecipe& OutRecipe);
 
 private:
 	TArray<FName> UnlockedElements;
